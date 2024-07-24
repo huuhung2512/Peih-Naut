@@ -8,10 +8,20 @@ public class MovementController : MonoBehaviour
     Rigidbody2D rb;
     [SerializeField] int speed;
 
-    [Range(1,10)]
+    [Range(1, 10)]
     [SerializeField] float acceleration;
     float speedMultiplier;
     bool btnPressed;
+
+    bool isWallTouch;
+    public LayerMask wallLayer;
+    public Transform wallCheckPoint;
+    Vector2 relativeTransform;
+    void Start()
+    {
+        UpdateRelativeTransform();
+    }
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -19,8 +29,22 @@ public class MovementController : MonoBehaviour
     void FixedUpdate()
     {
         UpdateSpeedMultiplier();
-        float targetSpeed = speed * speedMultiplier;
+        float targetSpeed = speed * speedMultiplier * relativeTransform.x;
         rb.velocity = new Vector2(targetSpeed, rb.velocity.y);
+        isWallTouch = Physics2D.OverlapBox(wallCheckPoint.position, new Vector2(0.06f, 0.55f), 0, wallLayer);
+        if(isWallTouch)
+        {
+            Flip();
+        }
+    }
+    public void Flip()
+    {
+        transform.Rotate(0, 180, 0);
+        UpdateRelativeTransform();
+    }
+    public void UpdateRelativeTransform()
+    {
+        relativeTransform = transform.InverseTransformVector(Vector2.one);
     }
     public void Move(InputAction.CallbackContext value)
     {

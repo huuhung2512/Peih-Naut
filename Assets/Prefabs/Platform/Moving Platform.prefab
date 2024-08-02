@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 6922725612265137822}
   - component: {fileID: 6922725612265137823}
   - component: {fileID: 6922725612265137821}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceda1f2a89427ae44a7e99fe0edc220b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 2
   ways: {fileID: 6922725612029839774}
   wayPoints: []
   waitDuration: 0.3
@@ -208,7 +208,7 @@ MonoBehaviour:
   m_UseRendererSilhouette: 1
   m_CastsShadows: 1
   m_SelfShadows: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 4758e365630e8be639a8907d000000002fc556bf5fbd8e54
   m_ShapePath:
   - {x: -0.5, y: -0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
@@ -216,7 +216,7 @@ MonoBehaviour:
   - {x: 0.5, y: -0.47959018, z: 0}
   m_ShapePathHash: 239322741
   m_Mesh: {fileID: 0}
-  m_InstanceId: 28384
+  m_InstanceId: -137878
 --- !u!50 &6922725612265137821
 Rigidbody2D:
   serializedVersion: 4
@@ -262,7 +262,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6922725613124633518}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

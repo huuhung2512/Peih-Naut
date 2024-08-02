@@ -6,20 +6,18 @@ using UnityEngine.InputSystem;
 public class MovementController : MonoBehaviour
 {
     Rigidbody2D rb;
+    public Rigidbody2D platformRb;
+    float speedMultiplier;
     [SerializeField] int speed;
-
     [Range(1, 10)]
     [SerializeField] float acceleration;
-    float speedMultiplier;
-    bool btnPressed;
-
-    bool isWallTouch;
     public LayerMask wallLayer;
     public Transform wallCheckPoint;
+    public ParticlesController particlesController;
     Vector2 relativeTransform;
-
     public bool isOnPlatform;
-    public Rigidbody2D platformRb;
+    bool btnPressed;
+    bool isWallTouch;
     void Start()
     {
         UpdateRelativeTransform();
@@ -32,6 +30,11 @@ public class MovementController : MonoBehaviour
     void FixedUpdate()
     {
         UpdateSpeedMultiplier();
+        MoveAndFlip();
+    }
+
+    void MoveAndFlip()
+    {
         float targetSpeed = speed * speedMultiplier * relativeTransform.x;
         if (isOnPlatform)
         {
@@ -41,8 +44,6 @@ public class MovementController : MonoBehaviour
         {
             rb.velocity = new Vector2(targetSpeed, rb.velocity.y);
         }
-
-
         isWallTouch = Physics2D.OverlapBox(wallCheckPoint.position, new Vector2(0.06f, 0.55f), 0, wallLayer);
         if (isWallTouch)
         {
@@ -51,12 +52,17 @@ public class MovementController : MonoBehaviour
     }
     public void Flip()
     {
+        particlesController.PlayTouchParticles(wallCheckPoint.position);
         transform.Rotate(0, 180, 0);
         UpdateRelativeTransform();
     }
     public void UpdateRelativeTransform()
     {
         relativeTransform = transform.InverseTransformVector(Vector2.one);
+    }
+    public void resetRelativeVector()
+    {
+        relativeTransform = Vector2.one;
     }
     public void Move(InputAction.CallbackContext value)
     {

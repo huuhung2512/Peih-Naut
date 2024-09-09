@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
 public class MovementController : MonoBehaviour
 {
     Rigidbody2D rb;
@@ -75,6 +74,9 @@ public class MovementController : MonoBehaviour
             btnPressed = false;
         }
     }
+
+  
+
     void UpdateSpeedMultiplier()
     {
         if (btnPressed && speedMultiplier < 1)

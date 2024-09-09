@@ -18,6 +18,12 @@ public class ParticlesController : MonoBehaviour
     [SerializeField] ParticleSystem fallParticles;
     [SerializeField] ParticleSystem touchParticles;
     [SerializeField] ParticleSystem dieParticles;
+
+    AudioManager audioManager;
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     void Start()
     {
         touchParticles.transform.parent = null;
@@ -36,16 +42,21 @@ public class ParticlesController : MonoBehaviour
     }
     public void PlayTouchParticles(Vector2 pos)
     {
+        audioManager.PlaySFX(audioManager.wallTouch);
         touchParticles.transform.position = pos;
         touchParticles.Play();
     }
-    public void die(){
+    public void die()
+    {
+        audioManager.PlaySFX(audioManager.death);
+
         dieParticles.Play();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Ground"))
         {
+            audioManager.PlaySFX(audioManager.wallTouch);
             fallParticles.Play();
             isOnGround = true;
         }

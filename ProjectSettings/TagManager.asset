@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - Obstacle
+  - Audio
   layers:
   - Default
   - TransparentFX
@@ -57,4 +58,7 @@ TagManager:
     locked: 0
   - name: Ground
     uniqueID: 1418640735
+    locked: 0
+  - name: White Screen
+    uniqueID: 373471003
     locked: 0

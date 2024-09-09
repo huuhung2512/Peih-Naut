@@ -7,9 +7,9 @@
             "actions": [
                 {
                     "name": "Movement",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "db7d8fca-179c-4ecc-9b20-5dabeeedd939",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -19,8 +19,19 @@
                 {
                     "name": "",
                     "id": "90bbf283-c2e7-4072-a08c-8dfcb8d0efd4",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
+                    "path": "<Mouse>/press",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cdb9d7d3-ac54-4965-8dd5-efe7c6cb36c3",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "Hold",
                     "processors": "",
                     "groups": "",
                     "action": "Movement",

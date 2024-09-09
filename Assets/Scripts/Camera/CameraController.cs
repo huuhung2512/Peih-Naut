@@ -15,8 +15,11 @@ public class CameraController : MonoBehaviour
     // giới hạn camera
     public Vector2 xLimit;
     public Vector2 yLimit;
+
+    public Animation anim;
     private void Awake(){
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        anim = GetComponent<Animation>();
     }
 
     private void  LateUpdate()
